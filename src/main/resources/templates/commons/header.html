@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--引数の title, links は fragment expressions */-->
+<head th:fragment="base_header(title,links)">
+  <!--/* 各ビュータイトル */-->
+  <title th:text="${title==null}? 'Spring boot de Hello world!' : ${title}+' | Spring boot de Hello world!'">Spring boot de Hello world!</title>
+
+  <!--/* 必ず読み込むファイル */-->
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
+  <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+  <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="common/js/jquery.bxslider/jquery.bxslider.css">
+  <link href = "../css/style.css" th:href="@{../css/style.css}" rel="stylesheet" />
+  <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
+  <!--/* 固有で読み込むリンク */-->
+  <th:block th:replace="${links}" />
+</head>
+<div id="page">
+  <header th:fragment="header">
+    <a href="./index.html" th:href="@{/}"><!--href="./login.html">-->top</a>
+    <a href="./radix_conversion.html" th:href="@{./radix_conversion}"><!--href="./login.html">-->基数変換</a>
+    <a href="./binary_number.html" th:href="@{./binary_number}"><!--href="./login.html">-->2進数の計算</a>
+    <a href="./contact.html" th:href="@{/contact}"><!--href="./login.html">--> 問い合わせ</a>
+    <!--<form th:action="@{./radix_conversion}" method="get">
+      <button>基数変換</button>
+    </form>-->
+      <!--<div th:text="${#httpServletRequest.getRequestName()}">
+      </div>-->
+    <!--<a href="./radix_conversion" th:href="@{./radix_conversion}">基数変換</a>-->
+
+    <!--<a href="./login.html" th:href="@{./login}" sec:authorize="isAnonymous()"><!--href="./login.html">ログイン</a>-->
+    <form th:action="@{./logout}" method="post" sec:authorize="isAuthenticated()">
+      <button>ログアウト</button>
+    </form>
+    testtest
+    <span th:text="${#request.requestURI}">acee</span>
+    <!--<span th:text="${#request.queryString}">bgtr</span>-->
+      <!--<span th:text="${#httpServletRequest.getRequestName()}"></span>-->
+    <p>ここはヘッダーです</p>
+  </header>
+</div>
+</html>

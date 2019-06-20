@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href = "./css/style.css" th:href="@{./css/style.css}" rel="stylesheet" />
+</head>
+<body>
+  <div th:include="./commons/header.html::header"></div>
+    <form th:action="@{./login_contact}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}">
+    <!--<input type="hidden" name="page" th:value="${page}">-->
+    <!--<input type="hidden" name="page" value="${#request.requestURI}">-->
+    <button>ログイン</button>
+    </form>
+  <div>
+    <form action="/confirm" th:action="@{./confirm}" method="post">
+      <div>お名前</div>
+      <div>
+        <input type="text" id="name" name="name">
+      </div>
+      <div>メールアドレス</div>
+      <div>
+        <input type="email" id="mail" name="mail">
+      </div>
+      <div>
+        <input type="radio" name="sex" id="sex" value="男性" checked="checked" />男性
+        <input type="radio" name="sex" id="sex" value="女性" />女性
+      </div>
+      <div>
+        <textarea id="content" name="content" rows="3" cols="" placeholder="お問い合わせ内容"></textarea>
+      </div>
+      <div>
+        <input type="submit" value="送信する">
+      </div>
+    </form>
+  </div>
+  <div th:replace="./commons/footer.html::footer"></div>
+</body>
+</html>

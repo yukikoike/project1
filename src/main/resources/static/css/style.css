@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+/*ページ*/
+#page {
+  width: 980px;
+  margin: 0 auto;
+}
+#canvas {
+margin: 10px;
+background: #ffffff;
+border: 1px solid #aaaaaa;
+}
+input[type="image"]{
+padding: 2px;
+outline: none;
+}
+input[type="image"].active{
+background-color: #fff;
+}
+table.radix_conversion {
+  margin-right: 95px;
+  border: 1px solid #000000;
+  float:left;
+}
+table.radix_conversion th, table.radix_conversion td {
+  border: 1px solid #000000;
+}
+th.top {
+  text-align: center;
+}
+span.under-line {
+  text-decoration: underline;
+}
+th.integer, td.integer, th.decimal, td.decimal {
+  border: 1px solid #000000;
+}
+/*全体*/
+.hidden_box {
+    margin: 2em 0;/*前後の余白*/
+    padding: 0;
+}
+
+/*ボタン装飾*/
+.hidden_box label {
+    padding: 15px;
+    font-weight: bold;
+    border: solid 2px black;
+    cursor :pointer;
+}
+
+/*ボタンホバー時*/
+.hidden_box label:hover {
+    background: #efefef;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input {
+    display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+table.binary td{
+  border: 1px solid #000000;
+}
+table.binary {
+  display: inline;
+}

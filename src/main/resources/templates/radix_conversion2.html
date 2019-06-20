@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:math="http://www.w3.org/1998/Math/MathML"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <!--/* 必ず読み込むファイル */-->
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
+  <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+  <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="common/js/jquery.bxslider/jquery.bxslider.css">
+  <link href = "./css/style.css" th:href="@{./css/style.css}" rel="stylesheet" />
+  <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
+</head>
+<body>
+  <div id="page">
+    <div th:include="./commons/header.html::header"></div>
+     <form th:action="@{./login_radix_conversion}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}">
+     <!--<input type="hidden" name="page" th:value="${page}">-->
+     <!--<input type="hidden" name="page" value="${#request.requestURI}">-->
+     <button>ログイン</button>
+    </form>
+    <h1>
+      2進数の計算
+    </h1>
+    <p>
+      &nbsp;2進数の足し算は簡単すぎるので説明を割愛します。<br>
+      2進数の引き算は、2進数&nbsp;-&nbsp;2進数の補数です。<br>
+      2進数の補数とは、ビットを反転させて+1したものです。<br>
+      <br>
+      例)<br>
+      0001(1)&nbsp;→&nbsp;1111(-1)<br>
+      0101(5)&nbsp;+&nbsp;1100(-4)&nbsp;=0001(1)
+    </p>
+    <p>
+      &nbsp;2進数をあらわすビット列を、左もしくは右にずらす操作を<b>シフト演算</b>と呼びます。<br>
+      左へnビットシフトすれば2<sup>n</sup>倍。<br>
+      右へnビットシフトすれば2<sup>-n</sup>倍。<br>
+      <br>
+    </p>
+    <p>
+      &nbsp;シフト演算の中で、符号を考慮せずに行うシフト操作が<b>論理シフト</b>です。<br>
+      シフトした場合、端が空いてしまいます。<br>
+      空いたところには0を入れればok。
+      空いたところに0を入れるのが<b>論理シフト</b>の特徴です。
+    </p>
+    <p>
+      &nbsp;シフト演算の中で、符号を考慮して行うシフト操作が<b>算術シフト</b>です。<br>
+      <br>
+      先頭の符号ビットを固定するのが特徴です。
+    </p>
+      <table class="radix_conversion">
+        <thead>
+          <tr>
+            <th colspan="10" class="top">
+              10進数→2進数(重みを使う方法)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              10進数
+            </th>
+            <td>
+              13.375
+            </td>
+            <td>
+              5.375
+            </td>
+            <td>
+              1.375
+            </td>
+            <td>
+              1.375
+            </td>
+            <td>
+            </td>
+            <td>
+              0.375
+            </td>
+            <td>
+              0.375
+            </td>
+            <td>
+              0.125
+            </td>
+            <td>
+              0
+            </td>
+          </tr>
+          <tr>
+            <th>
+              各桁の重み
+            </th>
+            <td>
+              8
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+            </td>
+            <td>
+              1/2<br>
+              (0.5)
+            </td>
+            <td>
+              1/4<br>
+              (0.25)
+            </td>
+            <td>
+              1/8<br>
+              (0.125)
+            </td>
+            <td>
+            </td>
+            <tr>
+              <th>
+                2進数
+              </th>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                0
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                .
+              </td>
+              <td>
+                0
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+      <table >
+        <thead>
+          <tr>
+            <th class="integer">
+              整数部
+            </th>
+            <th class="decimal">
+              小数部
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="integer">
+              2<span class="under-line">)13</span>
+            </td>
+            <td class="decimal">
+              2 × 0.375 = 0.75
+            </td>
+          </tr>
+          <tr>
+            <td class="integer">
+              2<span class="under-line">)&nbsp;6</span>・・・1
+            </td>
+            <td class="decimal">
+              2 × 0.75 = 1.5
+            </td>
+          </tr>
+          <tr>
+            <td class="integer">
+              2<span class="under-line">)&nbsp;3</span>・・・0
+            </td>
+            <td class="decimal">
+              2 × 0.5 = 1.0
+            </td>
+          </tr>
+          <tr>
+            <td class="integer">
+              2<span class="under-line">)&nbsp;1</span>・・・1
+            </td>
+            <td class="decimal">
+            </td>
+          </tr>
+          <tr>
+            <td class="integer">
+              &nbsp;&nbsp;0・・・1
+            </td>
+            <td class="decimal">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        基本情報技術者試験の過去問です。解いてみてください。<br><br>
+        平成21年度 春期 午前 問2<br>
+        <br>
+        &nbsp;&nbsp;0000～4999のアドレスをもつ<a href="https://wa3.i-3-i.info/word11947.html">ハッシュ表</a>があり,
+        レコードのキー値からアドレス<br>
+        に変換するアルゴリズムとして<span class="under-line">基数変換表</span>を用いる。キー値が55550のときのアドレ<br>
+        スはどれか。ここで,<span class="under-line">基数変換表</span>とは,キー値を11進数とみなし,10進数に変換し<br>
+        た後,下4けたに対して0.5を乗じた結果（小数点以下は切捨て）をレコードのアド<br>
+        レスとする。<br>
+        <br>
+        ア&nbsp;0260&nbsp;&nbsp;イ&nbsp;2525&nbsp;&nbsp;ウ&nbsp;2775&nbsp;&nbsp;エ&nbsp;4405
+      </p>
+      <div class="hidden_box">
+        <label for="label1">解答・解説</label>
+        <input type="checkbox" id="label1" />
+        <div class="hidden_show">
+          <p class="iconimg5 buruburusmlp">
+            正解:ア<br>
+            解説:キー値5550は桁ごとに11の累乗になっているにで、10進数に変換する。<br>
+            <br>
+            5&nbsp;×&nbsp;11<sup>4</sup>&nbsp;+&nbsp;5&nbsp;×&nbsp;11<sup>3</sup>&nbsp;+&nbsp;
+            5&nbsp;×&nbsp;11<sup>2</sup>&nbsp;+&nbsp;5&nbsp;×&nbsp;11<sup>1</sup>&nbsp;+&nbsp;
+            5&nbsp;×&nbsp;11<sup>0</sup><br>
+            =&nbsp;(11<sup>3</sup>&nbsp;+&nbsp;11<sup>2</sup>&nbsp;+&nbsp;11&nbsp;+&nbsp;1)&nbsp;×&nbsp;55<br>
+            =&nbsp;(1331&nbsp;+&nbsp;121&nbsp;+&nbsp;11&nbsp;+&nbsp;1)&nbsp;×&nbsp;55<br>
+            =&nbsp;80520<br>
+            <br>
+            80520の下4けたに0.5を乗じれば0260になります。
+          </p>
+        </div>
+      </div>
+      <p>
+        平成22年度 春期 午前 問1<br>
+        <br>
+        &nbsp;&nbsp;16進小数2A.4Cと等しいものはどれか。<br>
+        <br>
+        ア&nbsp;2<sup>5</sup>&nbsp;+&nbsp;2<sup>3</sup>&nbsp;+&nbsp;2<sup>1</sup>&nbsp;+&nbsp;2&nbsp;
+        <sup>-2</sup>&nbsp;+&nbsp;2<sup>-5</sup>&nbsp;+&nbsp;2<sup>-6</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;イ&nbsp;2<sup>5</sup>&nbsp;+&nbsp;2<sup>3</sup>&nbsp;+&nbsp;2<sup>1</sup>&nbsp;
+        +&nbsp;2<sup>-1</sup>&nbsp;+&nbsp;2<sup>-4</sup>&nbsp;+&nbsp;2<sup>-5</sup><br>
+        ウ&nbsp;2<sup>5</sup>&nbsp;+&nbsp;2<sup>4</sup>&nbsp;+&nbsp;2&nbsp;<sup>2</sup>&nbsp;+&nbsp;2<sup>-2</sup>
+        &nbsp;+&nbsp;2<sup>-5</sup>&nbsp;+&nbsp;2<sup>-6</sup><br>
+        エ&nbsp;2<sup>6</sup>&nbsp;+&nbsp;2<sup>4</sup>&nbsp;+&nbsp;2&nbsp;<sup>2</sup>&nbsp;+&nbsp;2<sup>-1</sup>
+        &nbsp;+&nbsp;2<sup>-4</sup>&nbsp;+&nbsp;2<sup>-5</sup><br>
+      </p>
+      <div class="hidden_box">
+        <label for="label2">解答・解説</label>
+        <input type="checkbox" id="label2" />
+        <div class="hidden_show">
+          <p class="iconimg5 buruburusmlp">
+            正解:ア<br>
+            解説:まず16進小数2A.4Cを2進数に変換します。16進数の1桁が2進数の4桁分に対応する
+            （1<sub>16</sub>→0001<sub>2</sub>、F<sub>16</sub>→1111<sub>2</sub>）ので、<br>
+            <br>
+            <br>
+            0010&nbsp;1010&nbsp;0100&nbsp;1100<br>
+            <br>
+            <br>
+            になります。乗数の数え方は、小数点の1つ左が2<sup>0</sup>、小数点の1つ右は2<sup>-1</sup>となるので、答え<br>
+            は「ア」の2<sup>5</sup>&nbsp;+&nbsp;2<sup>3</sup>&nbsp;+&nbsp;2<sup>1</sup>&nbsp;+&nbsp;2<sup>-2</sup>
+            &nbsp;+&nbsp;2<sup>-5</sup>&nbsp;+&nbsp;2<sup>-6</sup>となります。
+          </p>
+        </div>
+      </div>
+      <p>
+        平成22年度 秋期 午前 問1<br>
+        <br>
+        &nbsp;&nbsp;16進小数3A.5Cを10進数の分数で表したものはどれか。<br>
+        <br>
+        ア&nbsp;2<sup>5</sup>&nbsp;+&nbsp;2<sup>3</sup>&nbsp;+&nbsp;2<sup>1</sup>&nbsp;+&nbsp;2&nbsp;
+        <sup>-2</sup>&nbsp;+&nbsp;2<sup>-5</sup>&nbsp;+&nbsp;2<sup>-6</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;イ&nbsp;2<sup>5</sup>&nbsp;+&nbsp;2<sup>3</sup>&nbsp;+&nbsp;2<sup>1</sup>&nbsp;
+        +&nbsp;2<sup>-1</sup>&nbsp;+&nbsp;2<sup>-4</sup>&nbsp;+&nbsp;2<sup>-5</sup><br>
+        ウ&nbsp;2<sup>5</sup>&nbsp;+&nbsp;2<sup>4</sup>&nbsp;+&nbsp;2&nbsp;<sup>2</sup>&nbsp;+&nbsp;2<sup>-2</sup>
+        &nbsp;+&nbsp;2<sup>-5</sup>&nbsp;+&nbsp;2<sup>-6</sup>
+        エ&nbsp;2<sup>6</sup>&nbsp;+&nbsp;2<sup>4</sup>&nbsp;+&nbsp;2&nbsp;<sup>2</sup>&nbsp;+&nbsp;2<sup>-1</sup>
+        &nbsp;+&nbsp;2<sup>-4</sup>&nbsp;+&nbsp;2<sup>-5</sup><br>
+      </p>
+      <div class="hidden_box">
+        <label for="label3">解答・解説</label>
+        <input type="checkbox" id="label3" />
+        <div class="hidden_show">
+          <p class="iconimg5 buruburusmlp">
+            正解:ア<br>
+            解説:まず16進小数2A.4Cを2進数に変換します。16進数の1桁が2進数の4桁分に対応する
+            （1<sub>16</sub>→0001<sub>2</sub>、F<sub>16</sub>→1111<sub>2</sub>）ので、<br>
+            <br>
+            <br>
+            0010&nbsp;1010&nbsp;0100&nbsp;1100<br>
+            <br>
+            <br>
+            になります。乗数の数え方は、小数点の1つ左が2<sup>0</sup>、小数点の1つ右は2<sup>-1</sup>となるので、答え<br>
+            は「ア」の2<sup>5</sup>&nbsp;+&nbsp;2<sup>3</sup>&nbsp;+&nbsp;2<sup>1</sup>&nbsp;+&nbsp;2<sup>-2</sup>
+            &nbsp;+&nbsp;2<sup>-5</sup>&nbsp;+&nbsp;2<sup>-6</sup>となります。
+          </p>
+        </div>
+      </div>
+    <div th:replace="./commons/footer.html::footer"></div>
+    <!--</footer>-->
+    <script type="text/javascript" th:src="@{./js/script.js}"></script>
+  </div>
+
+</body>
+</html>

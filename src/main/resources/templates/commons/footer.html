@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!--引数の title, links は fragment expressions */-->
+<head th:fragment="base_header(title,links)">
+  <!--/* 各ビュータイトル */-->
+  <title th:text="${title==null}? 'Spring boot de Hello world!' : ${title}+' | Spring boot de Hello world!'">Spring boot de Hello world!</title>
+
+  <!--/* 必ず読み込むファイル */-->
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
+  <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+  <link href = "../css/style.css" th:href="@{../css/style.css}" rel="stylesheet" />
+  <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
+
+  <!--/* 固有で読み込むリンク */-->
+  <th:block th:replace="${links}" />
+</head>
+<div id="page">
+  <footer th:fragment="footer">
+    <p>ここはフッターです</p>
+  </footer>
+</div>
+</html>

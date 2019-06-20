@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href = "./css/style.css" th:href="@{./css/style.css}" rel="stylesheet" />
+</head>
+<body>
+  <div th:object="${mailForm}">
+    <form action="/complete" th:action="@{./complete}" method="post">
+      <div><span th:text="*{name}"></span></div>
+      <div><span th:text="*{mail}"></span></div>
+      <div><span th:text="*{sex}"></span></div>
+      <div><span th:utext="${mailForm.content} ? ${#strings.replace(mailForm.content, T(java.lang.System).getProperty('line.separator'), '&lt;br /&gt;')}"></span></div>
+      <div>
+        <input type="hidden" th:field="*{name}" value="*{name}">
+        <input type="hidden" th:field="*{mail}" value="*{mail}">
+        <input type="hidden" th:field="*{sex}" value="*{sex}">
+        <input type="hidden" th:field="*{content}" value="*{content}"/>
+        <input type="submit" value="上記内容で送信する">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

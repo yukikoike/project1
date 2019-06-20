@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: base_header('Main',~{::link})">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/js/app.js}">
+</head>
+<body>
+<div th:replace="layout :: header"></div>
+ <span th:text="${message}">Hello world</span>
+ <form action="/" method="POST">
+   <input name="name" type="text" /><br/>
+   <input type="submit" />
+   <a href="./login.html" th:href="@{/login}"><!--href="./login.html">--> ログイン</a>
+ </form>
+<div th:replace="layout :: footer"></div>
+</body>
+</html>
