@@ -17,10 +17,10 @@
 <body>
   <div id="page">
     <div th:include="./commons/header.html::header"></div>
-     <form th:action="@{./login_radix_conversion}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}">
-     <!--<input type="hidden" name="page" th:value="${page}">-->
-     <!--<input type="hidden" name="page" value="${#request.requestURI}">-->
-     <button>ログイン</button>
+     <form th:action="@{./login_binary_number}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}">
+       <!--<input type="hidden" name="page" th:value="${page}">-->
+       <!--<input type="hidden" name="page" value="${#request.requestURI}">-->
+       <button>ログイン</button>
     </form>
     <h1>
       2進数の計算
