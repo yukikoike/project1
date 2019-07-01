@@ -61,10 +61,10 @@ public class SendMailServiceImplTest {
     @BeforeClass
     public static void メールサーバを立てる() throws Exception {
         wiser = new Wiser();
-//        wiser.setPort(9999);
-//        wiser.setHostname("localhost");
-        wiser.setPort(587);
-        wiser.setHostname("smtp.gmail.com");
+        wiser.setPort(9999);
+        wiser.setHostname("localhost");
+//        wiser.setPort(587);
+//        wiser.setHostname("smtp.gmail.com");
         wiser.start();
 
     }
