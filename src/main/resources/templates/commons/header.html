@@ -30,14 +30,17 @@
     <!--<a href="./radix_conversion" th:href="@{./radix_conversion}">基数変換</a>-->
 
     <!--<a href="./login.html" th:href="@{./login}" sec:authorize="isAnonymous()"><!--href="./login.html">ログイン</a>-->
+<!--     <form name="to_sign_up" th:action="@{./sign_up}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}"> -->
+    <a href="./sign_up" th:href="@{./sign_up}" sec:authorize="isAnonymous()">会員登録</a>
+<!--     </form> -->
     <form th:action="@{./logout}" method="post" sec:authorize="isAuthenticated()">
       <button>ログアウト</button>
     </form>
-    testtest
     <span th:text="${#request.requestURI}">acee</span>
     <!--<span th:text="${#request.queryString}">bgtr</span>-->
       <!--<span th:text="${#httpServletRequest.getRequestName()}"></span>-->
     <p>ここはヘッダーです</p>
   </header>
+  <script type="text/javascript" th:src="@{./js/header.js}"></script>
 </div>
 </html>

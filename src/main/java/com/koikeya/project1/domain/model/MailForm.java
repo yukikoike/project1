@@ -9,7 +9,7 @@ import lombok.Data;
  */
 @Data
 @Component
-public class MailForm{
+public class MailForm {
 
      /**
       * メールアドレス

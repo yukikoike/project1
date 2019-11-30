@@ -5,6 +5,7 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -21,9 +22,13 @@ public class User implements Serializable {
     /**
      * ユーザーID
      */
+    // エンティティの主キーを表す
     @Id
+    // カラム名を指定する
     @Column(name = "ID")
-    private String id;
+    // 主キー列にユニークな値を自動で生成する
+    @GeneratedValue
+    private int id;
 
     /**
      * 権限ID

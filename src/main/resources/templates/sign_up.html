@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>project1</title>
+<link href = "./css/style.css" th:href="@{./css/style.css}" rel="stylesheet" />
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="page">
+    <div th:include="./commons/header.html::header"></div>
+    <!--<header th:fragment="header">-->
+    <!--</header>-->
+    <form th:action="@{./login_index}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}">
+
+      <button>ログイン</button>
+    </form>
+    <!--<footer th:fragment="footer">-->
+    <div th:replace="./commons/footer.html::footer"></div>
+    <!--</footer>-->
+  </div>
+</body>
+</html>

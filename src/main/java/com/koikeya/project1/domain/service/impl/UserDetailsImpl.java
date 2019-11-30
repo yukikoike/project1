@@ -62,7 +62,7 @@ public class UserDetailsImpl implements UserDetails {
      */
     @Override
     public String getUsername() {
-        return this.user.getId();
+        return Integer.toString(this.user.getId());
     }
 
     // アカウント期限切れ、アカウントロック、パスワード有効期限切れ、アカウント無効化に関するプロパティは使用しない
