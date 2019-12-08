@@ -1,10 +1,12 @@
-var submit = document.getElementById('submit');
+var submt = document.getElementById('submit');
+console.log(submit);
 
 submit.addEventListener('click', () => {
   var inputEmailAddress = document.getElementById('inputEmailAddress').value;
   var inputEmailAddressConfirm = document.getElementById('inputEmailAddressConfirm').value;
   var inputPassword = document.getElementById('inputPassword').value;
   var inputPasswordConfirm = document.getElementById('inputPasswordConfirm').value;
+  console.log("デバッグ中2");
 
   if (inputEmailAddress != inputEmailAddressConfirm) {
       event.preventDefault();
@@ -17,6 +19,7 @@ submit.addEventListener('click', () => {
       request.open('GET', 'http://localhost:8080/project1/registered_check'. false);
       request.send(inputEmailAddress)
       console.log(request.responseText);
+      // // TODO サーバーからのレスポンスでメールアドレスが登録済みだったらポップアップを表示して、画面遷移を中止
     }
 })
 
