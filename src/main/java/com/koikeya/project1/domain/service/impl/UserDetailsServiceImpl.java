@@ -78,11 +78,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // breakしないのはわざとです
         switch (roleName) {
             case ("ADMIN"):
-                return AuthorityUtils.createAuthorityList("ROLE_MEMBER", "ROLE_LEADER", "ROLE_EXECUTIVE", "ROLE_ADMIN");
-            case ("EXECUTIVE"):
-                return AuthorityUtils.createAuthorityList("ROLE_MEMBER", "ROLE_LEADER", "ROLE_EXECUTIVE");
-            case ("LEADER"):
-                return AuthorityUtils.createAuthorityList("ROLE_MEMBER", "ROLE_LEADER");
+                return AuthorityUtils.createAuthorityList("ROLE_MEMBER", "PAID_MEMBER", "ROLE_ADMIN");
+            case ("PAID_MEMBER"):
+                return AuthorityUtils.createAuthorityList("ROLE_MEMBER", "PAID_MEMBER");
             case ("MEMBER"):
                 return AuthorityUtils.createAuthorityList("ROLE_MEMBER");
             default:

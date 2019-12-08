@@ -3,7 +3,7 @@ package com.koikeya.project1.domain.service;
 import com.koikeya.project1.domain.model.MailForm;
 
 /**
- * メール実装サービス
+ * メール送信サービス
  */
 public interface SendMailService {
 

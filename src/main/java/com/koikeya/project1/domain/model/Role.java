@@ -29,4 +29,16 @@ public class Role implements Serializable {
      */
     @Column(name = "ROLE_NAME")
     private String roleName;
+
+    /**
+     * 更新日時
+     */
+    @Column(name = "UPDATED_AT")
+    private String updatedAt;
+
+    /**
+     * 登録日時
+     */
+    @Column(name = "CREATED_AT")
+    private String createdAt;
 }

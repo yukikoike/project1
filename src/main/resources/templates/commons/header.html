@@ -18,21 +18,25 @@
 </head>
 <div id="page">
   <header th:fragment="header">
-    <a href="./index.html" th:href="@{/}"><!--href="./login.html">-->top</a>
-    <a href="./radix_conversion.html" th:href="@{./radix_conversion}"><!--href="./login.html">-->基数変換</a>
-    <a href="./binary_number.html" th:href="@{./binary_number}"><!--href="./login.html">-->2進数の計算</a>
-    <a href="./contact.html" th:href="@{/contact}"><!--href="./login.html">--> 問い合わせ</a>
-    <!--<form th:action="@{./radix_conversion}" method="get">
-      <button>基数変換</button>
-    </form>-->
-      <!--<div th:text="${#httpServletRequest.getRequestName()}">
-      </div>-->
-    <!--<a href="./radix_conversion" th:href="@{./radix_conversion}">基数変換</a>-->
+    <table>
+      <tr>
+        <td><a href="./index.html" th:href="@{/}"><!--href="./login.html">-->top</a></td>
+        <td><a href="./radix_conversion.html" th:href="@{./radix_conversion}"><!--href="./login.html">-->基数変換</a></td>
+        <td><a href="./binary_number.html" th:href="@{./binary_number}"><!--href="./login.html">-->2進数の計算</a></td>
+        <td><a href="./contact.html" th:href="@{/contact}"><!--href="./login.html">--> 問い合わせ</a></td>
+      <!--<form th:action="@{./radix_conversion}" method="get">
+        <button>基数変換</button>
+      </form>-->
+        <!--<div th:text="${#httpServletRequest.getRequestName()}">
+        </div>-->
+      <!--<a href="./radix_conversion" th:href="@{./radix_conversion}">基数変換</a>-->
 
-    <!--<a href="./login.html" th:href="@{./login}" sec:authorize="isAnonymous()"><!--href="./login.html">ログイン</a>-->
-<!--     <form name="to_sign_up" th:action="@{./sign_up}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}"> -->
-    <a href="./sign_up" th:href="@{./sign_up}" sec:authorize="isAnonymous()">会員登録</a>
-<!--     </form> -->
+      <!--<a href="./login.html" th:href="@{./login}" sec:authorize="isAnonymous()"><!--href="./login.html">ログイン</a>-->
+  <!--     <form name="to_sign_up" th:action="@{./sign_up}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}"> -->
+      <td><a href="./sign_up" th:href="@{./sign_up}" sec:authorize="isAnonymous()">会員登録</a></td>
+      </tr>
+    </table>
+  <!--     </form> -->
     <form th:action="@{./logout}" method="post" sec:authorize="isAuthenticated()">
       <button>ログアウト</button>
     </form>

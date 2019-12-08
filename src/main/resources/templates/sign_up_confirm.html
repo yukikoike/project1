@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>project1</title>
+<link href = "./css/style.css" th:href="@{./css/style.css}" rel="stylesheet" />
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="page">
+    <div th:include="./commons/header.html::header"></div>
+    <!--<header th:fragment="header">-->
+    <!--</header>-->
+    <form th:action="@{./login_index}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}">
+      <button>会員登録</button>
+    </form>
+    <!-- 「th:with」でローカル変数を定義できる -->
+    <div th:with="page=${page}">
+      <div class="container">
+
+        <div class="page-header">
+          <h1>SimpleForm confirm</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped table-bordered" th:object="${userForm}">
+              <tr>
+                <th class="col-md-3">Text (ftext)</th>
+                <td class="col-md-9" th:text="*{selectRole}"></td>
+              </tr>
+              <tr>
+                <th>Date type text (roleI)</th>
+                <td th:text="*{roleId}"></td>
+              </tr>
+              <tr>
+                <th>Date (fdate)</th>
+                <td th:text="*{lastName}"></td>
+              </tr>
+              <tr>
+                <th>Number type text (ftnum)</th>
+                <td th:text="*{firstName}"></td>
+              </tr>
+              <tr>
+                <th>Number (fnum)</th>
+                <td th:text="*{dateOfBirth}"></td>
+              </tr>
+              <tr>
+                <th>Textarea (farea)</th>
+                <td th:text="*{emailAddress}"></td>
+              </tr>
+              <tr>
+                <th>Email (femail)</th>
+                <td th:text="*{password}"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!--<footer th:fragment="footer">-->
+        <div th:replace="./commons/footer.html::footer"></div>
+         <!--</footer>-->
+        </div>
+      </div>
+  </div>
+  <script type="text/javascript" src="./js/sign_up.js"></script>
+</body>
+</html>
