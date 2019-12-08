@@ -1,6 +1,4 @@
-package com.koikeya.project1.app.util;
-
-import javax.annotation.PostConstruct;
+package com.koikeya.project1.app.helper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -10,50 +8,25 @@ import org.springframework.stereotype.Component;
 import com.koikeya.project1.domain.model.MailForm;
 
 /**
- * メール送信ユーティリティクラス
+ * メール送信ヘルパークラス
  *
  * @author user
  *
  */
 @Component
-public class SendMailUtils {
-
-    /**
-     * 静的MailSender
-     */
-    static MailSender staticMailSender;
-
-    /**
-     * 静的SimpleMailMessage
-     */
-    static SimpleMailMessage staticMsg;
+public class SendMailHelper {
 
     /**
      * MailSender
      */
-    @Autowired(required = true)
+    @Autowired
     private MailSender mailSender;
 
-    /**
-     * SimpleMailMessage
-     */
-    @Autowired
-    private SimpleMailMessage msg;
-
-
-    /**
-     * 静的MailSenderを初期化する
-     */
-    @PostConstruct
-    private void initialize() {
-        SendMailUtils.staticMailSender = mailSender;
-        SendMailUtils.staticMsg = msg;
-    }
 
     /**
      * コンストラクタ
      */
-    protected SendMailUtils() {
+    protected SendMailHelper() {
         super();
     }
 
@@ -62,13 +35,13 @@ public class SendMailUtils {
      *
      * @param mailForm メールフォームオブジェクト
      */
-    public static void send(MailForm mailForm) {
+    public void send(MailForm mailForm) {
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom("yuki.koike8527@gmail.com");
-        msg.setTo(mailForm.getMail()); // 管理者アドレス
+        msg.setFrom("yuki.koike8527@gmail.com"); // 管理者アドレス
+        msg.setTo(mailForm.getMail());
         msg.setSubject("project1 アカウント確認のお願い");
         msg.setText(makeContent(mailForm));
-        staticMailSender.send(msg);
+        mailSender.send(msg);
     }
 
     /**

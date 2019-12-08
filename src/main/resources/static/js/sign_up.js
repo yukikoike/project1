@@ -14,7 +14,7 @@ submit.addEventListener('click', () => {
       alert("パスワードが一致しません。")
     } else {
       var request = new XMLHttpRequest();
-      request.open('GET', './registered_check'. false);
+      request.open('GET', 'http://localhost:8080/project1/registered_check'. false);
       request.send(inputEmailAddress)
       console.log(request.responseText);
     }
