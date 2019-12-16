@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  dir="ltr">
 <head>
 <meta charset="UTF-8">
 <title>project1</title>
@@ -32,9 +33,8 @@
           <!-- select roleId -->
           <div class="form-group">
             <label class="control-label" for="inputSelect">Select</label>
-            <select class="form-control" id="inputSelect" name="selectRole">
-              <option value="">---</option>
-              <option th:each="role : ${selectRole}" th:value="${role.value}" th:text="${role.key}" th:selected="${role.value} == *{roleId}">pulldown</option>
+            <select class="form-control" id="inputSelect" name="selectRole" th:field="*{roleId}">
+              <option th:each="role : ${selectRole}" th:value="${role.key}" th:text="${role.value}" th:selected="${role.value} == *{roleId}">pulldown</option>
             </select>
             <span th:if="${#fields.hasErrors('roleId')}" th:errors="*{roleId}" class="help-block">error!</span>
           </div>
@@ -50,11 +50,21 @@
             <input type="text" class="form-control" id="inputLastName" name="lastName" th:field="*{lastName}" />
             <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="help-block">error!</span>
           </div>
+          <div class="form-group">
+            <label class="control-label" for="inputRuby1"><abbr title="required">*</abbr> セイ</label>
+            <input type="text" class="form-control" id="inputRuby1" name="ruby1" th:field="*{ruby1}" />
+            <span th:if="${#fields.hasErrors('ruby1')}" th:errors="*{ruby1}" class="help-block">error!</span>
+          </div>
           <!-- number type text -->
           <div class="form-group">
             <label class="control-label" for="inputFirstName"><abbr title="required">*</abbr> 名</label>
             <input type="text" class="form-control" id="inputFirstName" name="firstName" th:field="*{firstName}" />
             <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="help-block">error!</span>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="inputRuby2"><abbr title="required">*</abbr> メイ</label>
+            <input type="text" class="form-control" id="inputRuby2" name="ruby2" th:field="*{ruby2}" />
+            <span th:if="${#fields.hasErrors('ruby2')}" th:errors="*{ruby2}" class="help-block">error!</span>
           </div>
           <!-- number -->
           <div class="form-group">

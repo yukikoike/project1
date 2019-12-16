@@ -26,36 +26,48 @@
 
         <div class="row">
           <div class="col-md-12">
-            <table class="table table-striped table-bordered" th:object="${userForm}">
-              <tr>
-                <th class="col-md-3">Text (ftext)</th>
-                <td class="col-md-9" th:text="*{roleId}"></td>
-              </tr>
-              <tr>
-                <th>Date type text (roleI)</th>
-                <td th:text="*{roleId}"></td>
-              </tr>
-              <tr>
-                <th>Date (fdate)</th>
-                <td th:text="*{lastName}"></td>
-              </tr>
-              <tr>
-                <th>Number type text (ftnum)</th>
-                <td th:text="*{firstName}"></td>
-              </tr>
-              <tr>
-                <th>Number (fnum)</th>
-                <td th:text="*{dateOfBirth}"></td>
-              </tr>
-              <tr>
-                <th>Textarea (farea)</th>
-                <td th:text="*{emailAddress}"></td>
-              </tr>
-              <tr>
-                <th>Email (femail)</th>
-                <td th:text="*{password}"></td>
-              </tr>
-            </table>
+            <form action = "./authentication.html" th:action="@{./sign_up_authentication}">
+              <table class="table table-striped table-bordered" th:object="${userForm}">
+                <tr>
+                  <th class="col-md-3">Text (ftext)</th>
+                  <td class="col-md-9" th:text="*{roleId}"></td>
+                </tr>
+                <tr>
+                  <th>Date type text (roleId)</th>
+                  <td th:text="*{roleId}"></td>
+                </tr>
+                <tr>
+                  <th>Date (lastName)</th>
+                  <td th:text="*{lastName}"></td>
+                </tr>
+                <tr>
+                  <th>Date (ruby1)</th>
+                  <td th:text="*{ruby1}"></td>
+                </tr>
+                <tr>
+                  <th>Number type text (firstName)</th>
+                  <td th:text="*{firstName}"></td>
+                </tr>
+                <tr>
+                <tr>
+                  <th>Number type text (ruby2)</th>
+                  <td th:text="*{ruby2}"></td>
+                </tr>
+                <tr>
+                  <th>Number (dateOfBirth)</th>
+                  <td th:text="*{dateOfBirth}"></td>
+                </tr>
+                <tr>
+                  <th>Textarea (emailAddress)</th>
+                  <td th:text="*{emailAddress}"></td>
+                </tr>
+                <tr>
+                  <th>Email (password)</th>
+                  <td th:text="*{password}"></td>
+                </tr>
+              </table>
+              <input type="submit" value="送信する">
+            </form>
           </div>
         </div>
         <!--<footer th:fragment="footer">-->
@@ -64,6 +76,5 @@
         </div>
       </div>
   </div>
-  <script type="text/javascript" src="./js/sign_up.js"></script>
 </body>
 </html>

@@ -1,13 +1,13 @@
 package com.koikeya.project1.domain.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import org.springframework.stereotype.Component;
 
@@ -37,6 +37,12 @@ public class User implements Serializable {
     private int id;
 
     /**
+     * メールアドレス
+     */
+    @Column(name = "EMAIL_ADDRESS")
+    private String emailAddress;
+
+    /**
      * 権限ID
      */
     @Column(name = "ROLE_ID")
@@ -49,22 +55,28 @@ public class User implements Serializable {
     private String lastName;
 
     /**
+     * セイ
+     */
+    @Column(name = "RUBY1")
+    private String ruby1;
+
+    /**
      * 名
      */
     @Column(name = "FIRST_NAME")
     private String firstName;
 
     /**
+     * メイ
+     */
+    @Column(name = "RUBY2")
+    private String ruby2;
+
+    /**
      * 生年月日
      */
     @Column(name = "DATE_OF_BIRTH")
-    private Date dateOfBirth;
-
-    /**
-     * メールアドレス
-     */
-    @Column(name = "EMAIL_ADDRESS")
-    private String emailAddress;
+    private String dateOfBirth;
 
     /**
      *パスワード
@@ -83,4 +95,11 @@ public class User implements Serializable {
      */
     @Column(name = "CREATED_AT")
     private String createdAt;
+
+    /**
+     * 版
+     */
+    @Version
+    @Column(name = "VERSION")
+    private int version;
 }

@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.koikeya.project1.app.form.UserForm;
 import com.koikeya.project1.domain.model.User;
@@ -49,8 +50,10 @@ public class SignUpProcessController {
      * @return 真偽
      */
     @RequestMapping("registered_check")
-    boolean registeredCheck(@RequestParam("inputEmailAddress") String inputEmailAddress) {
-        user.setEmailAddress(inputEmailAddress);
+    @ResponseBody
+    boolean registeredCheck(@RequestParam("emailAddress") String emailAddress) {
+        logger.info("成功");
+        user.setEmailAddress(emailAddress);
         return registeredCheck.registeredCheck(user);
     }
 
@@ -67,6 +70,7 @@ public class SignUpProcessController {
         if (result.hasErrors()) {
             return "sign_up";
         }
+        
         return "sign_up_confirm";
     }
 }

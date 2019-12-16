@@ -1,19 +1,20 @@
 package com.koikeya.project1.app.exception;
 
 /**
- * プロジェクト1基底例外
+ * 会員不存在例外クラス
  *
  * @author user
  *
  */
-public class Project1CommonException extends Exception {
+public class UserNotFoundException extends Project1CommonException {
 
     /**
      * コンストラクタ
      *
      * @param msg メッセージ
      */
-    public Project1CommonException(String msg) {
+    public UserNotFoundException(String msg) {
+        super(msg);
     }
 
     /**
@@ -21,6 +22,7 @@ public class Project1CommonException extends Exception {
      *
      * @param cause 原因
      */
-    public Project1CommonException(Throwable cause) {
+    public UserNotFoundException(Throwable cause) {
+        super(cause);
     }
 }

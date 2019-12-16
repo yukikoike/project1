@@ -1,13 +1,12 @@
 package com.koikeya.project1.domain.service.impl;
 
-import java.sql.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.koikeya.project1.app.form.UserForm;
-import com.koikeya.project1.app.helper.EncoderHelper;
+import com.koikeya.project1.app.helper.PasswordEncoderImpl;
+import com.koikeya.project1.app.util.DateTimeUtils;
 import com.koikeya.project1.domain.model.User;
 import com.koikeya.project1.domain.repository.UserRepository;
 import com.koikeya.project1.domain.service.SignUpProcessService;
@@ -35,10 +34,11 @@ public class SignUpProcessServiceImpl implements SignUpProcessService {
     UserRepository userRepository;
 
     /**
-     * エンコーダーヘルパー
+     * エンコーダーヘルパーオブジェクト
      */
     @Autowired
-    EncoderHelper encoderHelper;
+    PasswordEncoderImpl encoderHelper;
+
 
     /*
      * (非 Javadoc)
@@ -48,10 +48,14 @@ public class SignUpProcessServiceImpl implements SignUpProcessService {
     public void signUp(UserForm userForm) {
         user.setRoleId(userForm.getRoleId());
         user.setLastName(userForm.getLastName());
+        user.setRuby1(userForm.getRuby1());
         user.setFirstName(userForm.getFirstName());
-        user.setDateOfBirth(Date.valueOf(userForm.getDateOfBirth()));
+        user.setRuby2(userForm.getRuby2());
+        user.setDateOfBirth(userForm.getDateOfBirth());
         user.setPassword(encoderHelper.encode(userForm.getPassword()));
         user.setEmailAddress(userForm.getEmailAddress());
+        user.setUpdatedAt(DateTimeUtils.fetchTime());
+        user.setCreatedAt(DateTimeUtils.fetchTime());
         userRepository.saveAndFlush(user);
     }
 }

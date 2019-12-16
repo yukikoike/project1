@@ -52,7 +52,7 @@ public class SendMailHelper {
      */
     private static String makeContent(MailForm mailForm){
             return mailForm.getName() + "さん\n\n" +
-              "以下のリンクにアクセスしてアカウントを認証してください" + "\n" +
-              "問い合わせ内容: " + mailForm.getContent();
+              "以下のリンクにアクセスしてアカウントを認証してください" + "\n"
+              + mailForm.getContent();
     }
 }

@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import lombok.Data;
 
@@ -41,4 +42,11 @@ public class Role implements Serializable {
      */
     @Column(name = "CREATED_AT")
     private String createdAt;
+
+    /**
+     * 版
+     */
+    @Version
+    @Column(name = "VERSION")
+    private int version;
 }

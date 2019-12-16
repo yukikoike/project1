@@ -29,7 +29,16 @@ public class DateTimeUtils {
      * @return 日本の現在日時（yyyy-MM-dd HH:mm:ss形式）
      */
     public static String fetchTime() {
-        return DateTimeFormatter
-          .ofPattern("yyyy-MM-dd HH:mm:ss", Locale.JAPAN).format(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.JAPAN).format(LocalDateTime.now().
+          truncatedTo(ChronoUnit.SECONDS));
+    }
+    /**
+     * 日本の30分前の現在日時を取得する
+     *
+     * @return 日本の30分前の現在日時（yyyy-MM-dd HH:mm:ss形式）
+     */
+    public static String fetchTimeThirtyMinutesAgo() {
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.JAPAN).format(LocalDateTime.now()
+          .minusMinutes(30).truncatedTo(ChronoUnit.SECONDS));
     }
 }
