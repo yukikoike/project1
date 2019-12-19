@@ -1,7 +1,13 @@
 package com.koikeya.project1.domain.service;
 
-import com.koikeya.project1.app.form.UserForm;
+import com.koikeya.project1.domain.model.TempUser;
 
+/**
+ * 会員登録認証インターフェース
+ *
+ * @author user
+ *
+ */
 public interface SignUpAuthenticationService {
 
     /**
@@ -9,5 +15,5 @@ public interface SignUpAuthenticationService {
      *
      * @param tempUser ユーザーオブジェクト
      */
-    public void signUpAuthentication(UserForm userForm);
+    public void signUpAuthentication(TempUser tempUser);
 }

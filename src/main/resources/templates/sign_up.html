@@ -33,7 +33,7 @@
           <!-- select roleId -->
           <div class="form-group">
             <label class="control-label" for="inputSelect">Select</label>
-            <select class="form-control" id="inputSelect" name="selectRole" th:field="*{roleId}">
+            <select class="form-control" id="inputSelect" name="selectRole" th:field="*{roleId}" >
               <option th:each="role : ${selectRole}" th:value="${role.key}" th:text="${role.value}" th:selected="${role.value} == *{roleId}">pulldown</option>
             </select>
             <span th:if="${#fields.hasErrors('roleId')}" th:errors="*{roleId}" class="help-block">error!</span>
@@ -81,7 +81,7 @@
           <!-- email confirm -->
           <div class="form-group">
             <label class="control-label" for="inputEmailAddressConfirm"><abbr title="required">*</abbr> Email address confirm</label>
-            <input type="email" class="form-control" id="inputEmailAddressConfirm" name="emailAddress" th:field="*{emailAddress}" />
+            <input type="email" class="form-control" id="inputEmailAddressConfirm" name="inputEmailAddressConfirm" />
             <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" class="help-block">error!</span>
           </div>
           <!-- password -->
@@ -93,7 +93,7 @@
           <!-- password confirm-->
           <div class="form-group">
             <label class="control-label" for="inputPasswordConfirm"><abbr title="required">*</abbr> Password confirm</label>
-            <input type="password" class="form-control" id="inputPasswordConfirm" name="password" th:field="*{password}" />
+            <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" />
             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="help-block">error!</span>
           </div>
           <button type="submit" id="submit" class="btn btn-default">confirm</button>

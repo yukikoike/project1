@@ -26,46 +26,54 @@
 
         <div class="row">
           <div class="col-md-12">
-            <form action = "./authentication.html" th:action="@{./sign_up_authentication}">
-              <table class="table table-striped table-bordered" th:object="${userForm}">
+            <form action = "./authentication.html" th:action="@{./sign_up_authentication}" name="userForm" th:object="${userForm}" >
+              <table class="table table-striped table-bordered" >
                 <tr>
                   <th class="col-md-3">Text (ftext)</th>
                   <td class="col-md-9" th:text="*{roleId}"></td>
                 </tr>
                 <tr>
                   <th>Date type text (roleId)</th>
-                  <td th:text="*{roleId}"></td>
+                  <td th:text="*{roleId}" th:name="roleId" th:value="${roleId}" th:field="*{roleId}" ></td>
                 </tr>
                 <tr>
                   <th>Date (lastName)</th>
-                  <td th:text="*{lastName}"></td>
+                  <td th:text="*{lastName}" th:name="lastName" th:value="${lastName}" th:field="*{lastName}" ></td>
                 </tr>
                 <tr>
                   <th>Date (ruby1)</th>
-                  <td th:text="*{ruby1}"></td>
+                  <td th:text="*{ruby1}" th:name="ruby1" th:value="${ruby1}" th:field="*{ruby1}" ></td>
                 </tr>
                 <tr>
                   <th>Number type text (firstName)</th>
-                  <td th:text="*{firstName}"></td>
+                  <td th:text="*{firstName}" th:name="firstName" th:value="${firstName}" th:field="*{firstName}" ></td>
                 </tr>
                 <tr>
                 <tr>
                   <th>Number type text (ruby2)</th>
-                  <td th:text="*{ruby2}"></td>
+                  <td th:text="*{ruby2}" th:name="ruby2" th:value="${ruby2}" th:field="*{ruby2}"></td>
                 </tr>
                 <tr>
                   <th>Number (dateOfBirth)</th>
-                  <td th:text="*{dateOfBirth}"></td>
+                  <td th:text="*{dateOfBirth}" th:name="dateOfBirth" th:value="${dateOfBirth}" th:field="*{dateOfBirth}"></td>
                 </tr>
                 <tr>
                   <th>Textarea (emailAddress)</th>
-                  <td th:text="*{emailAddress}"></td>
+                  <td th:text="*{emailAddress}" th:name="emailAddress" th:value="${emailAddress}" th:field="*{emailAddress}" ></td>
                 </tr>
                 <tr>
                   <th>Email (password)</th>
-                  <td th:text="*{password}"></td>
+                  <td th:text="*{password}" th:name="password" th:value="${password}" th:field="*{password}" ></td>
                 </tr>
               </table>
+              <input type="hidden" name="roleId" th:value="*{roleId}" />
+              <input type="hidden" name="lastName" th:value="*{lastName}" />
+              <input type="hidden" name="ruby1" th:value="*{ruby1}" />
+              <input type="hidden" name="firstName" th:value="*{firstName}" />
+              <input type="hidden" name="ruby2" th:value="*{ruby2}" />
+              <input type="hidden" name="dateOfBirth" th:value="*{dateOfBirth}" />
+              <input type="hidden" name="emailAddress" th:value="*{emailAddress}" />
+              <input type="hidden" name="password" th:value="*{password}" />
               <input type="submit" value="送信する">
             </form>
           </div>

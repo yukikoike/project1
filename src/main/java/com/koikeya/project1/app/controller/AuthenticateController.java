@@ -17,6 +17,7 @@ import com.koikeya.project1.domain.service.AuthenticateService;
  * @author user
  *
  */
+@CrossOrigin
 @Controller
 public class AuthenticateController {
 

@@ -50,7 +50,7 @@ public class SendMailHelper {
      * @param mailForm メールフォーム
      * @return メールフォームの内容
      */
-    private static String makeContent(MailForm mailForm){
+    private String makeContent(MailForm mailForm){
             return mailForm.getName() + "さん\n\n" +
               "以下のリンクにアクセスしてアカウントを認証してください" + "\n"
               + mailForm.getContent();

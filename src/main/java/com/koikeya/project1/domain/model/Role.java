@@ -34,19 +34,19 @@ public class Role implements Serializable {
     /**
      * 更新日時
      */
-    @Column(name = "UPDATED_AT")
+    @Column(name = "UPDATED_AT", insertable = false, updatable = false)
     private String updatedAt;
 
     /**
      * 登録日時
      */
-    @Column(name = "CREATED_AT")
+    @Column(name = "CREATED_AT", insertable = false)
     private String createdAt;
 
     /**
      * 版
      */
     @Version
-    @Column(name = "VERSION")
+    @Column(name = "VERSION", insertable = false)
     private int version;
 }

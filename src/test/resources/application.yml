@@ -1,0 +1,53 @@
+app:
+  myProperty:
+    ipAddress: 192.168.10.35
+    port: 8080 
+
+server:
+  servlet:
+    context-path: /project1
+    # TODO 30分にもどす
+    session:
+      timeout: 1
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/project1
+    username: 〇〇〇〇
+    password: 〇〇〇〇
+  jpa:
+    database: MYSQL
+  thymeleaf:
+    cache: false
+    # アプリケーション起動時に、Entityに対応するテーブルがなければ作成する
+    #hibernate:
+      #ddl-auto: update
+  mail:
+    host: localhost
+    port: 9999
+    username: hoge
+    password: hoge
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+logging:
+  file: logs/myapp.log
+  level:
+    org:
+      springframework:
+        web: INFO
+
+security:
+  basic:
+    enabled: false
+
+management:
+  security:
+    enabled: false
+
+    

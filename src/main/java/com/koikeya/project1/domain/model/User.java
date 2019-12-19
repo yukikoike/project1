@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -33,7 +34,7 @@ public class User implements Serializable {
     // カラム名を指定する
     @Column(name = "ID")
     // 主キー列にユニークな値を自動で生成する
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     /**
@@ -87,19 +88,19 @@ public class User implements Serializable {
     /**
      * 更新日時
      */
-    @Column(name = "UPDATED_AT")
+    @Column(name = "UPDATED_AT", insertable = false, updatable = false)
     private String updatedAt;
 
     /**
      * 登録日時
      */
-    @Column(name = "CREATED_AT")
+    @Column(name = "CREATED_AT", insertable = false)
     private String createdAt;
 
     /**
      * 版
      */
     @Version
-    @Column(name = "VERSION")
+    @Column(name = "VERSION", insertable = false)
     private int version;
 }

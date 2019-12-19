@@ -1,28 +1,24 @@
 package com.koikeya.project1.app.properties;
 
+import java.util.Map;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 /**
- * AppMyProperty定数取得クラス
+ * ServerServlet定数取得クラス
  *
  * @author user
  *
  */
 @Data
-@ConfigurationProperties(prefix = "app.my-property")
+@ConfigurationProperties(prefix = "server.servlet")
 @Component
-public class AppMyProperty {
+public class ServerServlet {
 
-    /**
-     * IPv4 Address
-     */
-    private String ipAddress;
+    private String contextPath;
 
-    /**
-     * port
-     */
-    private String port;
+    private Map<String, String> session;
 }

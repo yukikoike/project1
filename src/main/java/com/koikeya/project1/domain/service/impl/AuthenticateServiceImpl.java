@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.koikeya.project1.app.exception.UserNotFoundException;
-import com.koikeya.project1.app.util.DateTimeUtils;
 import com.koikeya.project1.domain.model.TempUser;
 import com.koikeya.project1.domain.model.User;
 import com.koikeya.project1.domain.repository.TempUserRepository;
+import com.koikeya.project1.domain.repository.UserRepository;
 import com.koikeya.project1.domain.service.AuthenticateService;
 
 /**
@@ -25,6 +25,12 @@ public class AuthenticateServiceImpl implements AuthenticateService {
      * ロガー
      */
     Logger logger = LoggerFactory.getLogger(AuthenticateServiceImpl.class);
+
+    /**
+     * ユーザーリポジトリ
+     */
+    @Autowired
+    UserRepository userRepository;
 
     /**
      * 一時ユーザーリポジトリ
@@ -45,7 +51,7 @@ public class AuthenticateServiceImpl implements AuthenticateService {
      */
     @Override
     public void authenticateAndSignUp(String uUid) throws UserNotFoundException {
-        TempUser tempUser = tempUserRepository.findById("uUid").orElseThrow(
+        TempUser tempUser = tempUserRepository.findById(uUid).orElseThrow(
           () -> new UserNotFoundException("user is not found or disable."));
 
         logger.info("authenticateAndSignUp entered");
@@ -57,7 +63,8 @@ public class AuthenticateServiceImpl implements AuthenticateService {
         user.setRuby2(tempUser.getRuby2());
         user.setDateOfBirth(tempUser.getDateOfBirth());
         user.setPassword(tempUser.getPassword());
-        user.setUpdatedAt(DateTimeUtils.fetchTime());
-        user.setCreatedAt(DateTimeUtils.fetchTime());
+//        user.setUpdatedAt(DateTimeUtils.fetchTime());
+//        user.setCreatedAt(DateTimeUtils.fetchTime());
+        userRepository.saveAndFlush(user);
     }
 }

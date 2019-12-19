@@ -81,6 +81,6 @@ public class TempUser implements Serializable {
         /**
          * 登録日時
          */
-        @Column(name = "CREATED_AT")
+        @Column(name = "CREATED_AT", insertable = false, updatable = false)
         private String createdAt;
 }
