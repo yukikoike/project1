@@ -1,6 +1,6 @@
 # project1
 基本情報処理技術者対策のWEBアプリケーション（仮）
-下記のファイルの「〇〇〇〇」は自身の環境にあわせて書き換えてください。
+下記の2ファイルの「〇〇〇〇」は自身の環境にあわせて書き換えてください。
 project1\src\main\resources\application.yml
 project1\src\test\resources\application.yml
 
