@@ -52,7 +52,7 @@ public class SignUpProcessController {
     @RequestMapping("registered_check")
     @ResponseBody
     boolean registeredCheck(@RequestParam("emailAddress") String emailAddress) {
-        logger.info("成功");
+        logger.info("Successed");
         user.setEmailAddress(emailAddress);
         return registeredCheck.registeredCheck(user);
     }
@@ -70,7 +70,7 @@ public class SignUpProcessController {
         if (result.hasErrors()) {
             return "sign_up";
         }
-        
+
         return "sign_up_confirm";
     }
 }
