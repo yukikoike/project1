@@ -67,39 +67,11 @@
             <span th:if="${#fields.hasErrors('ruby2')}" th:errors="*{ruby2}" class="help-block">error!</span>
           </div>
           <!-- number -->
-<!--           <div class="form-group">
-            <label class="control-label" for="inputSelect">Select</label>
-            <select class="form-control" id="inputSelect" name="selectRole" th:field="*{roleId}" >
-              <option th:each="role : ${selectRole}" th:value="${role.key}" th:text="${role.value}" th:selected="${role.value} == *{roleId}">pulldown</option>
-            </select>
-            <span th:if="${#fields.hasErrors('roleId')}" th:errors="*{roleId}" class="help-block">error!</span>
-          </div> -->
           <div class="form-group">
-            <label class="control-label" for="inputSelectYear"><abbr title="required">*</abbr>生年</label>
-            <select class="form-control" id="inputSelectYear" name="selectYear">
-              <option th:each="year : ${selectYear}" th:value="${year}" th:selected="${year== year}" th:inline="text">[[${year}]]</option>
-            </select>
-<!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> -->
-          </div>
-          <div class="form-group">
-            <label class="control-label" for="inputSelectMonth"><abbr title="required">*</abbr>生月</label>
-            <select class="form-control" id="inputSelectMonth" name="selectMonth">
-              <option th:each="month : ${selectMonth}" th:value="${month}" th:selected="${month == month}" th:inline="text">[[${month}]]</option>
-            </select>
-<!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> -->
-          </div>
-          <div class="form-group">
-            <label class="control-label" for="inputSelectDay"><abbr title="required">*</abbr>生日</label>
-            <select class="form-control" id="inputSelectDay" name="selectDay" th:field="*{dateOfBirth}">
-<!--               <option value="1" selected th:value="${month}" th:inline="text">1</option> -->
-            </select>
-<!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> -->
-          </div>
-<!--      <div class="form-group">
             <label class="control-label" for="inputDateOfBirth"><abbr title="required">*</abbr> 生年月日</label>
             <input type="text" class="form-control" id="inputDateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}" />
             <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="help-block">error!</span>
-          </div> -->
+          </div>
           <!-- email -->
           <div class="form-group">
             <label class="control-label" for="inputEmailAddress"><abbr title="required">*</abbr> Email address</label>

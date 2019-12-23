@@ -63,6 +63,8 @@ public class AuthenticateServiceImpl implements AuthenticateService {
         user.setRuby2(tempUser.getRuby2());
         user.setDateOfBirth(tempUser.getDateOfBirth());
         user.setPassword(tempUser.getPassword());
+//        user.setUpdatedAt(DateTimeUtils.fetchTime());
+//        user.setCreatedAt(DateTimeUtils.fetchTime());
         userRepository.saveAndFlush(user);
     }
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.koikeya.project1.app.form.UserForm;
-import com.koikeya.project1.app.util.DateTimeUtils;
 
 /**
  * 会員登録画面遷移コントローラークラス
@@ -50,16 +49,7 @@ public class SignUpController {
     String signUp(@ModelAttribute("userForm") UserForm userForm, Model model) {
         logger.info("Entered");
         model.addAttribute("selectRole", SELECT_ROLE);
-        int yearArray[] = new int[DateTimeUtils.fetchYear() + 1 - 1900];
-        for (int i = 1900, j = 0;j < yearArray.length;i++, j++) {
-            yearArray[j] = i;
-        }
-        int monthArray[] = new int[12];
-        for (int i = 1, j = 0;j < monthArray.length;i++, j++) {
-            monthArray[j] = i;
-        }
-        model.addAttribute("selectYear", yearArray);
-        model.addAttribute("selectMonth", monthArray);
+
         return "sign_up";
     }
 }

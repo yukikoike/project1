@@ -24,15 +24,6 @@ public class DateTimeUtils {
     }
 
     /**
-     * 日本の年（西暦）を整数で取得する
-     *
-     * @return 日本の年（西暦）の整数
-     */
-    public static int fetchYear() {
-        return LocalDateTime.now().getYear();
-    }
-
-    /**
      * 日本の現在日時を取得する
      *
      * @return 日本の現在日時（yyyy-MM-dd HH:mm:ss形式）
