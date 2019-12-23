@@ -14,8 +14,8 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/project1
-    username: 〇〇〇〇
-    password: 〇〇〇〇
+    username: project1
+    password: abcd0711
   jpa:
     database: MYSQL
   thymeleaf:
@@ -27,7 +27,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: yuki.koike8527@gmail.com
-    password: 〇〇〇〇
+    password: abcd0711
     properties:
       mail:
         smtp:

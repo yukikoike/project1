@@ -91,13 +91,6 @@ public class SignUpAuthenticationServiceImpl implements SignUpAuthenticationServ
 
             String uUid = UUID.randomUUID().toString();
             tempUser.setUuid(uUid);
-//            tempUser.setEmailAddress(userForm.getEmailAddress());
-//            tempUser.setRoleId(userForm.getRoleId());
-//            tempUser.setLastName(userForm.getLastName());
-//            tempUser.setRuby1(userForm.getRuby1());
-//            tempUser.setFirstName(userForm.getFirstName());
-//            tempUser.setRuby2(userForm.getRuby2());
-//            tempUser.setDateOfBirth(userForm.getDateOfBirth());
             tempUser.setPassword(passwordEncoder.encode(tempUser.getPassword()));
             tempUserRepository.saveAndFlush(tempUser);
 
@@ -105,6 +98,7 @@ public class SignUpAuthenticationServiceImpl implements SignUpAuthenticationServ
             mailForm.setContent("http://" + appMyProperty.getIpAddress() + ":"
               + appMyProperty.getPort() + serverServlet.getContextPath() + "/authenticate" + "?id=" + uUid);
 
+            mailForm.setName(tempUser.getLastName());
             mailForm.setMail(tempUser.getEmailAddress());
 
             sendMailHelper.send(mailForm);
