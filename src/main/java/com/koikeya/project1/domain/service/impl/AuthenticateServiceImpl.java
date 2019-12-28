@@ -64,5 +64,7 @@ public class AuthenticateServiceImpl implements AuthenticateService {
         user.setDateOfBirth(tempUser.getDateOfBirth());
         user.setPassword(tempUser.getPassword());
         userRepository.saveAndFlush(user);
+
+        tempUserRepository.deleteById(String.valueOf(user.getId()));
     }
 }

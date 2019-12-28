@@ -16,10 +16,10 @@ create table user (
   id int auto_increment not null comment 'ID'
   , email_address varchar(255) not null comment 'メールアドレス'
   , role_id char(3) not null comment '権限ID'
-  , last_name varchar(255) not null comment '姓'
-  , first_name varchar(255) not null comment '名'
-  , ruby1 varchar(255) not null comment 'セイ'
-  , ruby2 varchar(255) not null comment 'メイ'
+  , last_name varchar(20) not null comment '姓'
+  , first_name varchar(20) not null comment '名'
+  , ruby1 varchar(20) not null comment 'セイ'
+  , ruby2 varchar(20) not null comment 'メイ'
   , date_of_birth date not null comment '生年月日'
   , password varchar(255) not null comment 'パスワード'
   , updated_at datetime  default (current_timestamp) comment '更新日時'
@@ -29,22 +29,22 @@ create table user (
 )
 comment='ユーザーマスタ';
 
--- 一時ユーザートラン
+-- 一時ユーザーマスタ
 --* RestoreFromTempTable
 create table temp_user (
   uuid char(36) comment 'UUID'
   , email_address varchar(255) not null comment 'メールアドレス'
   , role_id char(3) not null comment '権限ID'
-  , last_name varchar(255) not null comment '姓'
-  , ruby1 varchar(255) not null comment 'セイ'
-  , first_name varchar(255) not null comment '名'
-  , ruby2 varchar(255) not null comment 'メイ'
+  , last_name varchar(20) not null comment '姓'
+  , ruby1 varchar(20) not null comment 'セイ'
+  , first_name varchar(20) not null comment '名'
+  , ruby2 varchar(20) not null comment 'メイ'
   , date_of_birth date not null comment '生年月日'
   , password varchar(255) not null comment 'パスワード'
   , created_at datetime default (current_timestamp) comment '登録日時'
   , constraint user_PKC primary key (uuid, email_address )
 )
-comment='一時ユーザートラン';
+comment='一時ユーザーマスタ';
 
 create index role_id
   on user(role_id);

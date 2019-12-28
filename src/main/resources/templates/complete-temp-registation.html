@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>project1</title>
+<link href = "./css/style.css" th:href="@{./css/style.css}" rel="stylesheet" />
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="page">
+    <div th:include="./commons/header.html::header"></div>
+    <!--<header th:fragment="header">-->
+    <!--</header>-->
+    <form th:action="@{./login_index}" method="get" sec:authorize="isAnonymous()" th:with="page=${#request.queryString}">
+      <button>会員登録</button>
+    </form>
+    <form role="form" action="./sign_up_process" th:action="@{./sign_up_process}" th:object="${userForm}" method="post">
+      <div class="form-group">
+        <label class="control-label" for="roleId"><abbr title="required">*</abbr> ID</label>
+        <input type="text" class="form-control" th:text="*{roleId}" th:name="roleId" th:value="${roleId}" th:field="*{roleId}" />
+      </div>
+    </form>
+    <!-- 「th:with」でローカル変数を定義できる -->
+<!--     <div th:with="page=${page}"> -->
+<!--       画面幅がMiduim以上のときはグリッドを4個持つカラムを生成する TODO 「Bootstrap 4 フロントエンド開発の教科書」を読み直す -->
+<!--       <div class="col-md-12"> -->
+<!--         <form role="form" action="./sign_up_process" th:action="@{./sign_up_process}" th:object="${userForm}" method="post"> -->
+<!--           id -->
+<!-- <!--           <div class="form-group"> --> -->
+<!-- <!--             <label class="control-label" for="inputId"><abbr title="required">*</abbr> ID</label> --> -->
+<!-- <!--             「*{id}」でuserForm.idに値を代入することができる --> -->
+<!-- <!--             <input type="text" class="form-control" id="inputId" name="id" th:field="*{id}" /> --> -->
+<!-- <!--             idにエラーがあればerror!が表示される --> -->
+<!-- <!--             <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="help-block">error!</span> --> -->
+<!-- <!--           </div> --> -->
+<!--           select roleId -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputSelect">Select</label> -->
+<!--             <select class="form-control" id="inputSelect" name="selectRole" th:field="*{roleId}" > -->
+<!--               <option th:each="role : ${selectRole}" th:value="${role.key}" th:text="${role.value}" th:selected="${role.value} == *{roleId}">pulldown</option> -->
+<!--             </select> -->
+<!--             <span th:if="${#fields.hasErrors('roleId')}" th:errors="*{roleId}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputLastName"><abbr title="required">*</abbr> 姓</label> -->
+<!--             <input type="text" class="form-control" id="inputLastName" name="lastName" th:field="*{lastName}" /> -->
+<!--             <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputRuby1"><abbr title="required">*</abbr> セイ</label> -->
+<!--             <input type="text" class="form-control" id="inputRuby1" name="ruby1" th:field="*{ruby1}" /> -->
+<!--             <span th:if="${#fields.hasErrors('ruby1')}" th:errors="*{ruby1}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           number type text -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputFirstName"><abbr title="required">*</abbr> 名</label> -->
+<!--             <input type="text" class="form-control" id="inputFirstName" name="firstName" th:field="*{firstName}" /> -->
+<!--             <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputRuby2"><abbr title="required">*</abbr> メイ</label> -->
+<!--             <input type="text" class="form-control" id="inputRuby2" name="ruby2" th:field="*{ruby2}" /> -->
+<!--             <span th:if="${#fields.hasErrors('ruby2')}" th:errors="*{ruby2}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputSelectYear"><abbr title="required">*</abbr>生年</label> -->
+<!--             <select class="form-control" id="inputSelectYear" name="selectYear"> -->
+<!--               <option th:each="year : ${selectYear}" th:value="${year}" th:selected="${year== year}" th:inline="text">[[${year}]]</option> -->
+<!--             </select> -->
+<!-- <!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> --> -->
+<!--           </div> -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputSelectMonth"><abbr title="required">*</abbr>生月</label> -->
+<!--             <select class="form-control" id="inputSelectMonth" name="selectMonth"> -->
+<!--               <option th:each="month : ${selectMonth}" th:value="${month}" th:selected="${month == month}" th:inline="text">[[${month}]]</option> -->
+<!--             </select> -->
+<!-- <!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> --> -->
+<!--           </div> -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputSelectDay"><abbr title="required">*</abbr>生日</label> -->
+<!--             <select class="form-control" id="inputSelectDay" name="selectDay"> -->
+<!-- <!--               <option value="1" selected th:value="${month}" th:inline="text">1</option> --> -->
+<!--             </select> -->
+<!-- <!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> --> -->
+<!--           </div> -->
+<!--           <input type="hidden" id="dateOfBirth" th:field="*{dateOfBirth}"> -->
+<!--           email -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputEmailAddress"><abbr title="required">*</abbr> Email address</label> -->
+<!--             <input type="email" class="form-control" id="inputEmailAddress" name="emailAddress" th:field="*{emailAddress}" /> -->
+<!--             <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           email confirm -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputEmailAddressConfirm"><abbr title="required">*</abbr> Email address confirm</label> -->
+<!--             <input type="email" class="form-control" id="inputEmailAddressConfirm" name="inputEmailAddressConfirm" /> -->
+<!--             <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           password -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputPassword"><abbr title="required">*</abbr> Password</label> -->
+<!--             <input type="password" class="form-control" id="inputPassword" name="password" th:field="*{password}" /> -->
+<!--             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           password confirm -->
+<!--           <div class="form-group"> -->
+<!--             <label class="control-label" for="inputPasswordConfirm"><abbr title="required">*</abbr> Password confirm</label> -->
+<!--             <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" /> -->
+<!--             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="help-block">error!</span> -->
+<!--           </div> -->
+<!--           <button type="submit" id="submit" class="btn btn-default">confirm</button> -->
+<!--         </form> -->
+<!--       </div> -->
+<!--     </div> -->
+    <!--<footer th:fragment="footer">-->
+    <div th:replace="./commons/footer.html::footer"></div>
+    <!--</footer>-->
+  </div>
+  <script type="text/javascript" src="./js/sign_up.js"></script>
+</body>
+</html>

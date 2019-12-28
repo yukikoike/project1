@@ -7,8 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.koikeya.project1.app.form.UserForm;
 import com.koikeya.project1.domain.model.TempUser;
 import com.koikeya.project1.domain.service.SignUpAuthenticationService;
 
@@ -40,7 +42,7 @@ public class SignUpAuthenticationController {
      * @return メールアドレス認証画面のパス
      */
     @RequestMapping("sign_up_authentication")
-    String signUpAuthentication(/*@ModelAttribute("userForm") UserForm userForm,*/ HttpServletRequest request) {
+    String signUpAuthentication(@ModelAttribute("userForm") UserForm userForm, HttpServletRequest request) {
         logger.info("signUpAuthentication entered");
         HttpSession session = request.getSession();
         tempUser.setRoleId(request.getParameter("roleId"));
@@ -52,6 +54,7 @@ public class SignUpAuthenticationController {
         tempUser.setEmailAddress(request.getParameter("emailAddress"));
         tempUser.setPassword(request.getParameter("password"));
         signUpAuthenticationService.signUpAuthentication(tempUser);
-        return null;
+
+        return "complete-temp-registation";
     }
 }
