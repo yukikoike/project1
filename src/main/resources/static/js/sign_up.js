@@ -50,21 +50,6 @@ window.onload = function() {
       option.text = i;
       inputSelectDay.appendChild(option);
     }
-//    var y = inputSelectYear.value;
-//    var m = inputSelectMonth.value;
-//    if (m.toString().length === 1) {
-//      m = '0' + m;
-//    }
-//    var d = inputSelectDay.value;
-//    if (d.toString().length === 1) {
-//      d = '0' + d;
-//    }
-//    var inputDateOfBirth = document.querySelector('#dateOfBirth');
-//    inputDateOfBirth.value = (y + m + d);
-//    console.log(inputSelectYear.value);
-//    console.log(inputSelectMonth.value);
-//    console.log(inputSelectDay.value);
-//    console.log(inputDateOfBirth.value);
   });
 
 
@@ -81,21 +66,6 @@ window.onload = function() {
         option.text = i;
         inputSelectDay.appendChild(option);
       }
-//      var y = inputSelectYear.value;
-//      var m = inputSelectMonth.value;
-//      if (m.toString().length === 1) {
-//        m = '0' + m;
-//      }
-//      var d = inputSelectDay.value;
-//      if (d.toString().length === 1) {
-//        d = '0' + d;
-//      }
-//      var inputDateOfBirth = document.querySelector('#dateOfBirth');
-//      inputDateOfBirth.value = (y + m + d);
-//      console.log(inputSelectYear.value);
-//      console.log(inputSelectMonth.value);
-//      console.log(inputSelectDay.value);
-//      console.log(inputDateOfBirth.value);
   });
 
 
