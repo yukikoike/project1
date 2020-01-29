@@ -62,14 +62,14 @@
           <div class="form-group">
             <label class="control-label" for="inputSelectYear"><abbr title="required">*</abbr>生年</label>
             <select class="form-control" id="inputSelectYear" name="selectYear">
-              <option th:each="year : ${selectYear}" th:value="${year}" th:selected="${year== year}" th:inline="text">[[${year}]]</option>
+              <option th:each="year : ${selectYear}" th:value="${year}" th:inline="text">[[${year}]]</option>
             </select>
 <!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> -->
           </div>
           <div class="form-group">
             <label class="control-label" for="inputSelectMonth"><abbr title="required">*</abbr>生月</label>
             <select class="form-control" id="inputSelectMonth" name="selectMonth">
-              <option th:each="month : ${selectMonth}" th:value="${month}" th:selected="${month == month}" th:inline="text">[[${month}]]</option>
+              <option th:each="month : ${selectMonth}" th:value="${month}" th:inline="text">[[${month}]]</option>
             </select>
 <!--             <span th:if="${#fields.hasErrors('')}" th:errors="*{dateOfBirth}" class="help-block">error!</span> -->
           </div>

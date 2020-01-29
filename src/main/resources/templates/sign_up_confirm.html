@@ -29,8 +29,8 @@
             <form action = "./authentication.html" th:action="@{./sign_up_authentication}" name="userForm" th:object="${userForm}" >
               <table class="table table-striped table-bordered" >
                 <tr>
-                  <th>権限ID (roleId)</th>
-                  <td th:text="*{roleId}" th:name="roleId" th:value="${roleId}" th:field="*{roleId}" ></td>
+                  <th>権限</th>
+                  <td th:text="${role}" th:name="role" th:value="${role}" th:field="*{roleId}" ></td>
                 </tr>
                 <tr>
                   <th>姓 (lastName)</th>

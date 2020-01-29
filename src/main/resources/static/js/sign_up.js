@@ -10,8 +10,9 @@ window.onload = function() {
   var inputSelectMonth = document.querySelector("#inputSelectMonth");
 
   // option要素の取得（配列）
-  var inputSelectMonthOptions = document.querySelectorAll("#inputSelectMonth option");
-
+  var inputSelectYearOptions = document.querySelectorAll("#inputSelectYear option");
+//  var inputSelectMonthOptions = document.querySelectorAll("#inputSelectMonth option");
+  inputSelectYearOptions[inputSelectYearOptions.length + 1 - 32].selected = true;
   // inputSelectMonth要素の取得
   var inputSelectDay = document.querySelector("#inputSelectDay");
 

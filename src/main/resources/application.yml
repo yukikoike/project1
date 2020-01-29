@@ -49,5 +49,3 @@ security:
 management:
   security:
     enabled: false
-
-    

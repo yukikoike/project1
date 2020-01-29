@@ -1,11 +1,16 @@
 package com.koikeya.project1.app.controller;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +47,17 @@ public class SignUpProcessController {
     @Autowired
     User user;
 
+    /**
+     * 権限
+     */
+ // これがスタティックイニシャライザ?
+    final static Map<Integer, String> SELECT_ROLE =
+      Collections.unmodifiableMap(new LinkedHashMap<Integer, String>() {{
+        put(1, "会員");
+        put(2, "有料会員");
+        put(3, "管理者");
+      }
+    });
 
     /**
      * 登録済みチェックをする
@@ -65,12 +81,13 @@ public class SignUpProcessController {
      * @return 会員登録確認画面のパス
      */
     @RequestMapping("sign_up_process")
-    String signUpProcess(@Valid @ModelAttribute("userForm") UserForm userForm, BindingResult result) {
+    String signUpProcess(@Valid @ModelAttribute("userForm") UserForm userForm, BindingResult result, Model model) {
         logger.info("Entered");
         if (result.hasErrors()) {
             return "sign_up";
         }
 
+        model.addAttribute("role", SELECT_ROLE.get(userForm.getId()));
         return "sign_up_confirm";
     }
 }
