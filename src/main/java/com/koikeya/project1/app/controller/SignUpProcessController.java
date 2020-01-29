@@ -51,11 +51,11 @@ public class SignUpProcessController {
      * 権限
      */
  // これがスタティックイニシャライザ?
-    final static Map<Integer, String> SELECT_ROLE =
-      Collections.unmodifiableMap(new LinkedHashMap<Integer, String>() {{
-        put(1, "会員");
-        put(2, "有料会員");
-        put(3, "管理者");
+    final static Map<String, String> SELECT_ROLE =
+      Collections.unmodifiableMap(new LinkedHashMap<String, String>() {{
+        put("1", "会員");
+        put("2", "有料会員");
+        put("3", "管理者");
       }
     });
 
@@ -87,7 +87,7 @@ public class SignUpProcessController {
             return "sign_up";
         }
 
-        model.addAttribute("role", SELECT_ROLE.get(userForm.getId()));
+        model.addAttribute("role", SELECT_ROLE.get(userForm.getRoleId()));
         return "sign_up_confirm";
     }
 }
